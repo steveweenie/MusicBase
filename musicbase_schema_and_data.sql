@@ -99,4 +99,14 @@ CREATE TABLE review_likes (
 );
 
 
+-- USERS
+INSERT INTO users (username, email, password_hash, following_count, follower_count)
+VALUES
+('ceedot', 'chock@gmail.com', 'hashed_password_1', 150, 200),
+('devilain05', 'lainswag@yahoo.com', 'hashed_password_2', 300, 450),
+('sirnarly07', 'oombakhta@aol.com', 'hashed_password_3', 120, 180),
+('stevecoder', 'meepis@gmail.com', 'hashed_password_4', 500, 600);
+
+-- ARTISTS
+
 
