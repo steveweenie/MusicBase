@@ -19,9 +19,9 @@ CREATE TABLE artists (
     artist_name VARCHAR(100) NOT NULL,
     country VARCHAR(50),
     monthly_listeners INT DEFAULT 0,
-    follower_count INT DEFAULT 0,
+    follower_count INT DEFAULT 0
     -- Removed 'genre' as it's better linked to songs/albums
-    );
+);
 
 -- Albums Table 
 CREATE TABLE albums (
@@ -30,7 +30,7 @@ CREATE TABLE albums (
     release_date DATE,
     label VARCHAR(100),
     total_tracks INT DEFAULT 0,
-    album_rating FLOAT DEFAULT 0,
+    album_rating FLOAT DEFAULT 0
     -- Removed artist id because album can have multiple artists
 );
 
@@ -52,7 +52,7 @@ CREATE TABLE songs (
     release_date DATE,
     play_count INT DEFAULT 0,
     song_rating FLOAT DEFAULT 0,
-    FOREIGN KEY (album_id) REFERENCES albums(album_id) ON DELETE SET NULL,
+    FOREIGN KEY (album_id) REFERENCES albums(album_id) ON DELETE SET NULL
     -- Removed artist id because it will be handled by song artists
 );
 
@@ -213,7 +213,7 @@ VALUES
 (3, 7, 4, 'Melancholic yet beautiful.', 700),
 (4, 8, 4, 'Innovative and ahead of its time.', 500);
 
---USER_FOLLOWS
+-- USER_FOLLOWS
 INSERT INTO user_follows (follower_id, followed_id)
 VALUES
 (1, 2),
