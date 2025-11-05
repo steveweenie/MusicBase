@@ -85,7 +85,7 @@ CREATE TABLE reviews (
     review_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
     song_id INT,
-    rating INT CHECK (rating >= 1 AND rating <= 5),
+    rating INT CHECK (rating >= 0 AND rating <= 5),
     review_text TEXT,
     review_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     like_count INT DEFAULT 0,
@@ -144,7 +144,7 @@ VALUES
 ('King Crimson', 'UK', 50000000, 15000000);
 
 -- ALBUMS
-INSERT INTO albums (album_name, artist_id, release_date, label, total_tracks, album_rating)
+INSERT INTO albums (album_name, release_date, label, total_tracks, album_rating)
 VALUES
 ('Nevermind', 1, '1991-09-24', 'DGC Records', 12, 4.9),
 ('Blurryface', 2, '2015-05-29', 'Fueled by Ramen', 14, 4.7),
