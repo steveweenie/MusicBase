@@ -1,4 +1,4 @@
-# MusicBase – Milestone 2: Data Population, Queries, and Automation
+# MusicBase
 
 ## Overview
 
