@@ -88,6 +88,7 @@ CREATE TABLE reviews (
     rating INT CHECK (rating >= 0 AND rating <= 5),
     review_text TEXT,
     review_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     like_count INT DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (song_id) REFERENCES songs(song_id) ON DELETE CASCADE,
@@ -146,14 +147,14 @@ VALUES
 -- ALBUMS
 INSERT INTO albums (album_name, release_date, label, total_tracks, album_rating)
 VALUES
-('Nevermind', 1, '1991-09-24', 'DGC Records', 12, 4.9),
-('Blurryface', 2, '2015-05-29', 'Fueled by Ramen', 14, 4.7),
-('February', 3, '2020-05-15', 'Hehe Records', 10, 4.5),
-('JOKER', 4, '2018-10-31', 'Top Dawg Entertainment', 14, 4.6),
-('So Close to Perfection...', 5, '2025-09-12', 'Independent', 11, 4.8),
-('Abbey Road', 6, '1968-08-26', 'Apple Records', 17, 5.0),
-('The Queen Is Dead', 7, '1986-01-20', 'Rough Trade Records', 10, 4.9),
-('In the Court of the Crimson King', 8, '1969-10-10', 'Island Records', 5, 4.7);
+('Nevermind','1991-09-24', 'DGC Records', 12, 4.9),
+('Blurryface', '2015-05-29', 'Fueled by Ramen', 14, 4.7),
+('February', '2020-05-15', 'Hehe Records', 10, 4.5),
+('JOKER', '2018-10-31', 'Top Dawg Entertainment', 14, 4.6),
+('So Close to Perfection...', '2025-09-12', 'Independent', 11, 4.8),
+('Abbey Road', '1968-08-26', 'Apple Records', 17, 5.0),
+('The Queen Is Dead', '1986-01-20', 'Rough Trade Records', 10, 4.9),
+('In the Court of the Crimson King', '1969-10-10', 'Island Records', 5, 4.7);
 
 -- ALBUM_ARTISTS (Linking albums to artists)
 INSERT INTO album_artists (album_id, artist_id)
