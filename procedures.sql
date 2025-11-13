@@ -22,4 +22,6 @@ BEGIN
 END //
 DELIMITER ;
 
+SELECT * FROM artists WHERE artist_id = 1;
+
 CALL p_show_followers_group(1);

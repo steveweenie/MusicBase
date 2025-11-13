@@ -1,6 +1,6 @@
 -- the purpose of this trigger is to automatically recalculate and update a song's rating when a new review is 
 -- inserted into the database. for the complete project we would also need triggers to update the rating when a 
--- review is deleted or updated.
+-- review is deleted or updated but for this assignment we just did this one
 
 use musicbase_db;
 
