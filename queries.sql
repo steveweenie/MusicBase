@@ -7,29 +7,30 @@ FROM artists
 ORDER BY monthly_listeners DESC
 LIMIT 5;
 
--- Query 2: Create new artist, album, and song (idk who added these but it doesn't work because of some changes to the schema)
-INSERT INTO artists (artist_name, country, monthly_listeners, follower_count, genre) -- no genre's in artists
-VALUES ('Of Montreal', 'America', 544000, 365000, 'Alternative/Indie');
 
-INSERT INTO albums (album_name, artist_id, release_date, label, total_tracks, album_rating) -- no album id
-VALUES ('Skeletal Lamping', 1, '2008-10-21', 'Polyvinyl Record Co.', 15, 4.5);
+-- Query 2: Create new artist, album, and song 
+INSERT INTO artists (artist_name, country, monthly_listeners, follower_count) -- no genre's in artists => removed genre
+VALUES ('Of Montreal', 'America', 544000, 365000);
 
-INSERT INTO songs (song_name, album_id, artist_id, song_duration, release_date, play_count, song_rating) -- no artist id
-VALUES ('Gallery Piece', 1, 1, 225, '2008-10-21', 14000000, 4.9),
-       ('Wraith Pinned to the Mist and Other Games', 1, 1, 300, '2008-10-21', 43000000, 4.7);
+INSERT INTO albums (album_name, release_date, label, total_tracks, album_rating) -- no album id
+VALUES ('Skeletal Lamping', '2008-10-21', 'Polyvinyl Record Co.', 15, 4.5);
+
+INSERT INTO songs (song_name, album_id, song_duration, release_date, play_count, song_rating) -- no artist id
+VALUES ('Gallery Piece', 9, 225, '2008-10-21', 14000000, 4.9),
+       ('Wraith Pinned to the Mist and Other Games', 9, 300, '2008-10-21', 43000000, 4.7);
 
 -- Query 3: Read user with the highest follower count
 SELECT * FROM users
 WHERE follower_count = (SELECT MAX(follower_count) FROM users);
 
---Query 4: Update play count for a specific song
+-- Query 4: Update play count for a specific song
 UPDATE songs
 SET play_count = play_count + 1000
 WHERE song_id = 1;
 
---Query 5: Delete a song by song_id
+-- Query 5: Delete a song by song_id
 DELETE FROM songs
-WHERE song_id = 2;
+WHERE song_id = 10;
 
 -- Query 6: lists all songs, the albums they are in, and the artists name
 SELECT s.song_name, a.album_name, ar.artist_name
