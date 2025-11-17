@@ -204,3 +204,23 @@
 
 -- -----------------------------------------------------------------------------------
 
+-- this trigger increments the song count in an album
+-- DROP TRIGGER IF EXISTS tr_total_tracks_ai
+-- DELIMITER //
+-- CREATE TRIGGER tr_total_tracks_ai
+-- AFTER INSERT
+-- ON songs
+-- FOR EACH ROW
+-- BEGIN
+-- 	UPDATE albums
+--     SET total_tracks = total_tracks + 1
+--     WHERE album_id = NEW.album_id;
+-- END //
+-- DELIMITER ;
+
+-- INSERT INTO songs
+-- VALUE()
+
+-- this 
+
+
