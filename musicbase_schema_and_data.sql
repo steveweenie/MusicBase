@@ -135,14 +135,14 @@ VALUES
 -- ARTISTS
 INSERT INTO artists (artist_name, country, monthly_listeners, follower_count)
 VALUES
-('Nirvana', 'USA', 80000000, 25000000),
-('Twenty One Pilots', 'USA', 60000000, 20000000),
-('February', 'USA', 90000000, 30000000),
-('Dax', 'USA', 70000000, 22000000),
-('A New Day', 'USA', 100000000, 40000000),
-('Beatles', 'UK', 120000000, 50000000),
-('Smiths', 'UK', 110000000, 45000000),
-('King Crimson', 'UK', 50000000, 15000000);
+('Nirvana', 'USA', 80000000, 7),
+('Twenty One Pilots', 'USA', 60000000, 5),
+('February', 'USA', 90000000, 3),
+('Dax', 'USA', 70000000, 4),
+('A New Day', 'USA', 100000000, 6),
+('Beatles', 'UK', 120000000, 3),
+('Smiths', 'UK', 110000000, 7),
+('King Crimson', 'UK', 50000000, 4);
 
 -- ALBUMS
 INSERT INTO albums (album_name, release_date, label, total_tracks, album_rating)
