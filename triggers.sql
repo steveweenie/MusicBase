@@ -224,3 +224,72 @@
 -- this 
 
 
+--------------------------------------------------------------------------------
+
+-- Triggers for updating album rating
+
+-- DROP TRIGGER IF EXISTS tr_album_rating_ai;
+-- DELIMITER //
+-- CREATE TRIGGER tr_album_rating_ai
+-- AFTER INSERT
+-- ON reviews
+-- FOR EACH ROW
+-- BEGIN
+-- UPDATE albums
+--      SET album_rating = (
+--          SELECT AVG(r.rating)
+--          FROM reviews r
+--          JOIN songs s ON r.song_id = s.song_id
+--          WHERE s.album_id = (SELECT album_id FROM songs WHERE song_id = NEW.song_id)
+--      )
+--      WHERE album_id = (SELECT album_id FROM songs WHERE song_id = NEW.song_id);
+-- END //
+-- DELIMITER ;
+
+-- TEST INSERTING
+ 
+-- SELECT * FROM albums;
+-- SELECT * FROM songs;
+-- SELECT * FROM reviews;
+
+-- INSERT INTO songs (song_name, album_id, song_duration, release_date, play_count, song_rating)
+-- VALUES ('Drain You', 1, 221, '1991-09-10', 1500000000, 4.6);
+
+-- INSERT INTO reviews (user_id, song_id, rating, review_text, like_count)
+-- VALUES (2, 9, 1, "Not timeless and not uplifting", 3);
+
+-- DROP TRIGGER IF EXISTS tr_album_rating_au;
+-- DELIMITER //
+-- CREATE TRIGGER tr_album_rating_au
+-- AFTER UPDATE
+-- ON reviews
+-- FOR EACH ROW
+-- BEGIN
+-- UPDATE albums
+--      SET album_rating = (
+--          SELECT AVG(r.rating)
+--          FROM reviews r
+--          JOIN songs s ON r.song_id = s.song_id
+--          WHERE s.album_id = (SELECT album_id FROM songs WHERE song_id = NEW.song_id)
+--      )
+--      WHERE album_id = (SELECT album_id FROM songs WHERE song_id = NEW.song_id);
+-- END //
+-- DELIMITER ;
+
+-- DROP TRIGGER IF EXISTS tr_album_rating_ad;
+-- DELIMITER //
+-- CREATE TRIGGER tr_album_rating_ad
+-- AFTER DELETE
+-- ON reviews
+-- FOR EACH ROW
+-- BEGIN
+-- UPDATE albums
+--      SET album_rating = (
+--          SELECT AVG(r.rating)
+--          FROM reviews r
+--          JOIN songs s ON r.song_id = s.song_id
+--          WHERE s.album_id = (SELECT album_id FROM songs WHERE song_id = OLD.song_id)
+--      )
+--      WHERE album_id = (SELECT album_id FROM songs WHERE song_id = OLD.song_id);
+-- END //
+-- DELIMITER ;
