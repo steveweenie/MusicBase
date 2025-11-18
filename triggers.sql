@@ -67,6 +67,24 @@
 -- END //
 -- DELIMITER ;
 
+-- this trigger updates the updated_at column of a review when it's updated
+-- DROP TRIGGER IF EXISTS tr_review_updated_at_bu
+-- DELIMITER //
+-- CREATE TRIGGER tr_review_updated_at_bu
+-- BEFORE UPDATE 
+-- ON reviews
+-- FOR EACH ROW
+-- BEGIN
+--     SET NEW.updated_at = NOW();
+-- END //
+-- DELIMITER ;
+
+-- test
+-- SELECT * FROM reviews
+-- UPDATE reviews
+-- SET rating = 5
+-- WHERE review_id = 1
+
 -- ---------------------------------------------------------------
 
 -- TRIGGERS FOR LIKE COUNTS
@@ -224,7 +242,7 @@
 -- this 
 
 
---------------------------------------------------------------------------------
+-- ------------------------------------------------------------------------------
 
 -- Triggers for updating album rating
 
@@ -293,3 +311,6 @@
 --      WHERE album_id = (SELECT album_id FROM songs WHERE song_id = OLD.song_id);
 -- END //
 -- DELIMITER ;
+
+-- ------------------------------------------------
+
