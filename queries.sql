@@ -74,3 +74,21 @@ JOIN artists ar ON sa.artist_id = ar.artist_id
 JOIN albums a ON s.album_id = a.album_id
 ORDER BY s.play_count DESC
 LIMIT 5;
+
+-- Query 12: All information about A new day, including their albums, songs, and genres
+SELECT a.artist_id, a.artist_name, a.country, a.monthly_listeners, a.follower_count, al.album_id, al.album_name, al.release_date AS album_release, al.label AS album_label, al.total_tracks, al.album_rating, s.song_id, s.song_name, s.song_duration, s.release_date AS song_release, s.play_count, s.song_rating, g.genre_name
+
+FROM artists a
+LEFT JOIN album_artists aa ON a.artist_id = aa.artist_id
+LEFT JOIN albums al ON aa.album_id = al.album_id
+LEFT JOIN songs s ON s.album_id = al.album_id
+LEFT JOIN song_genres sg ON sg.song_id = s.song_id
+LEFT JOIN genres g ON g.genre_id = sg.genre_id
+
+WHERE a.artist_name = 'A New Day'
+ORDER BY al.album_id, s.song_id;
+
+
+
+
+
