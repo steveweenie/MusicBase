@@ -88,7 +88,30 @@ LEFT JOIN genres g ON g.genre_id = sg.genre_id
 WHERE a.artist_name = 'A New Day'
 ORDER BY al.album_id, s.song_id;
 
+-- Query 13: Get all artists and their average rating with review counts
+SELECT 
+    a.artist_name,
+    COUNT(DISTINCT r.review_id) AS total_reviews,
+    ROUND(AVG(r.rating), 2) AS avg_rating
+FROM artists a
+JOIN song_artists sa ON sa.artist_id = a.artist_id
+JOIN songs s ON sa.song_id = s.song_id
+JOIN reviews r ON s.song_id = r.song_id
+GROUP BY a.artist_name
+HAVING COUNT(s.song_id) > 0
+ORDER BY avg_rating;
 
-
-
-
+-- Query 14: Songs with above average global ratings
+SELECT 
+    s.song_name,
+    ar.artist_name,
+    s.song_rating
+FROM songs s
+JOIN song_artists sa ON s.song_id = sa.song_id
+JOIN artists ar ON sa.artist_id = ar.artist_id
+WHERE s.song_rating > (
+    SELECT AVG(song_rating) 
+    FROM songs 
+    WHERE song_rating > 0
+)
+ORDER BY s.song_rating DESC;
