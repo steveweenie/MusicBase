@@ -156,9 +156,9 @@ WHERE genres LIKE '%Rock%';
 -- Show original rating for Song ID 6 ('Hey Jude')
 SELECT song_name, song_rating AS original_rating FROM songs WHERE song_id = 6;
 
--- Insert a new review (this will fire the trigger)
+-- Insert a new review (using user_id 9, which hasn't reviewed song 6 yet)
 INSERT INTO reviews (user_id, song_id, rating, review_text) 
-VALUES (5, 6, 1, 'My least favorite Beatles song LOL xD!'); 
+VALUES (9, 6, 1, 'My least favorite Beatles song LOL xD!'); 
 
 -- Show the new, recalculated rating for Song ID 6
 SELECT song_name, song_rating AS new_rating FROM songs WHERE song_id = 6;

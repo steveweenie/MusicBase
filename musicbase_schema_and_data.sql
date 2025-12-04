@@ -288,7 +288,7 @@ VALUES
 (5, 5), -- Three Part Harmony -> Metalcore
 (6, 1), -- Hey Jude -> Rock
 (7, 1), (7, 7), -- There Is a Light... -> Rock, Alternative Rock
-(8, 6); -- 21st Century Schizoid Man -> Progressive Rock
+(8, 6), -- 21st Century Schizoid Man -> Progressive Rock
 (9, 2), -- Natural -> Pop
 (10, 2), -- Bad Guy -> Pop
 (11, 1), (11, 5), -- Master of Puppets -> Rock, Metalcore
