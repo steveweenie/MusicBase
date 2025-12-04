@@ -115,3 +115,38 @@ WHERE s.song_rating > (
     WHERE song_rating > 0
 )
 ORDER BY s.song_rating DESC;
+
+-- Query 15: Creating a view for artists
+CREATE OR REPLACE View v_artists_summary AS
+SELECT a.artist_id, a.artist_name, a.country, COUNT(DISTINCT s.song_id) AS total_songs, ROUND(AVG(s.song_rating), 2) AS avg_rating, SUM(s.play_count) AS total_plays
+FROM artists a
+JOIN song_artists sa ON a.artist_id = sa.artist_id
+JOIN songs s ON sa.song_id = s.song_id
+GROUP BY a.artist_id, a.artist_name, a.country;
+
+-- Query 16: Find top 5 artists rating
+SELECT *
+FROM v_artists_summary
+WHERE total_songs > 0
+ORDER BY avg_rating DESC, total_plays DESC
+LIMIT 5;
+
+-- Query 17: Find top 5 most played artists 
+SELECT *
+FROM v_artists_summary
+WHERE total_songs > 0
+ORDER BY total_plays DESC
+LIMIT 5;
+
+-- Query 18: Creating a view for songs and thier genres
+CREATE OR REPLACE VIEW v_song_genres AS
+SELECT s.song_id, s.song_name, s.album_id, GROUP_CONCAT(g.genre_name ORDER BY g.genre_name SEPARATOR ', ') AS genres
+FROM songs s
+LEFT JOIN song_genres sg ON s.song_id = sg.song_id
+LEFT JOIN genres g ON sg.genre_id = g.genre_id
+GROUP BY s.song_id, s.song_name, s.album_id;
+
+-- Query 19: Find songs based on thier genre using the Song Genres View
+SELECT song_id, song_name, genres
+FROM v_song_genres
+WHERE genres LIKE '%Rock%';
