@@ -276,7 +276,7 @@ VALUES
 
 -- GENRES
 INSERT INTO genres (genre_name)
-VALUES ('Rock'), ('Pop'), ('Emo'), ('Rap'), ('Metalcore'), ('Progressive Rock'), ('Alternative Rock'), ('Indie Rock'), ('Hip Hop'), ('R&B'), ('Electronic'), ('Country'), ('Jazz'), ('Classical'), ('Reggae'), ('Funk'), ('Disco'), ('Punk Rock'), ('Soul'), ('Blues');
+VALUES ('Rock'), ('Pop'), ('Emo'), ('Rap'), ('Metalcore'), ('Progressive Rock'), ('Alternative Rock'), ('Indie Rock'), ('Hip Hop'), ('R&B'), ('Electronic'), ('Country'), ('Jazz'), ('Classical'), ('Reggae'), ('Funk'), ('Disco'), ('Punk Rock'), ('Soul'), ('Blues'), ('Folk'), ('Dream Pop'), ('Post Punk'), ('House'), ('Trap');
 
 -- SONG_GENRES (Linking songs to genres)
 INSERT INTO song_genres (song_id, genre_id)
@@ -310,31 +310,31 @@ VALUES
 -- REVIEWS
 INSERT INTO reviews (user_id, song_id, rating, review_text, like_count)
 VALUES
-(1, 1, 5, 'An absolute classic that defined a generation.', 1200),
-(2, 2, 4, 'A catchy tune with relatable lyrics.', 950),
-(3, 3, 4, 'Emotional and powerful performance.', 800),
-(4, 4, 1, 'Good beat but lyrics could be better.', 600),
-(1, 5, 5, 'A masterpiece in modern metalcore.', 1100),
-(2, 6, 5, 'Timeless and uplifting.', 1500),
-(3, 7, 4, 'Melancholic yet beautiful.', 700),
-(4, 8, 4, 'Innovative and ahead of its time.', 500),
-(1, 9, 3, 'Decent pop song, nothing special.', 400),
-(2, 10, 4, 'Unique sound and style.', 850),
-(3, 11, 5, 'One of the best metal songs ever.', 1300),
-(4, 12, 4, 'Great energy and emotion.', 900),
-(1, 13, 5, 'A vocal performance like no other.', 1400),
-(2, 14, 4, 'Feel-good track with a great vibe.', 750),
-(3, 15, 2, 'Not my style, but well-produced.', 300),
-(4, 16, 5, 'Infectious rhythm and catchy chorus.', 1250),
-(1, 17, 4, 'Solid rap track with a good message.', 950),
-(2, 18, 5, 'Perfect pop song with great hooks.', 1600),
-(3, 19, 4, 'Funky and fun to listen to.', 800),
-(4, 20, 5, 'Powerful lyrics and delivery.', 1100),
-(1, 21, 5, 'An instant classic with a retro vibe.', 1700),
-(2, 22, 4, 'Dance-worthy and energetic.', 900),
-(3, 23, 3, 'Good but overplayed on the radio.', 450),
-(4, 24, 4, 'Catchy and trendy.', 700),
-(1, 25, 5, 'One of the best pop songs of the decade.', 1800);
+(1, 1, 5, 'An absolute classic that defined a generation.', 0),
+(2, 2, 4, 'A catchy tune with relatable lyrics.', 0),
+(3, 3, 4, 'Emotional and powerful performance.', 0),
+(4, 4, 1, 'Good beat but lyrics could be better.', 0),
+(1, 5, 5, 'A masterpiece in modern metalcore.', 0),
+(2, 6, 5, 'Timeless and uplifting.', 0),
+(3, 7, 4, 'Melancholic yet beautiful.', 0),
+(4, 8, 4, 'Innovative and ahead of its time.', 0),
+(1, 9, 3, 'Decent pop song, nothing special.', 0),
+(2, 10, 4, 'Unique sound and style.', 0),
+(3, 11, 5, 'One of the best metal songs ever.', 0),
+(4, 12, 4, 'Great energy and emotion.', 0),
+(1, 13, 5, 'A vocal performance like no other.', 0),
+(2, 14, 4, 'Feel-good track with a great vibe.', 0),
+(3, 15, 2, 'Not my style, but well-produced.', 0),
+(4, 16, 5, 'Infectious rhythm and catchy chorus.', 0),
+(1, 17, 4, 'Solid rap track with a good message.', 0),
+(2, 18, 5, 'Perfect pop song with great hooks.', 0),
+(3, 19, 4, 'Funky and fun to listen to.', 0),
+(4, 20, 5, 'Powerful lyrics and delivery.', 0),
+(1, 21, 5, 'An instant classic with a retro vibe.', 0),
+(2, 22, 4, 'Dance-worthy and energetic.', 0),
+(3, 23, 3, 'Good but overplayed on the radio.', 0),
+(4, 24, 4, 'Catchy and trendy.', 0),
+(1, 25, 5, 'One of the best pop songs of the decade.', 0);
 
 -- USER_FOLLOWS
 INSERT INTO user_follows (follower_id, followed_id)
@@ -354,7 +354,18 @@ VALUES
 (7, 8),
 (7, 5),
 (8, 5),
-(8, 6);
+(8, 6),
+(21, 1),
+(21, 2),
+(21, 3),
+(21, 4),
+(21, 5),
+(21, 6),
+(21, 7),
+(21, 8),
+(21, 9),
+(21, 10);
+
 
 -- ARTIST_FOLLOWERS
 INSERT INTO artist_followers (user_id, artist_id)
@@ -374,7 +385,16 @@ VALUES
 (7, 13),
 (7, 14),
 (8, 15),
-(8, 16);
+(8, 16),
+(10, 4),
+(11, 4),
+(12, 4),
+(13, 4),
+(14, 4),
+(15, 4),
+(16, 4),
+(17, 4),
+(18, 4);
 
 -- REVIEW_LIKES
 INSERT INTO review_likes (user_id, review_id)
@@ -394,4 +414,14 @@ VALUES
 (3, 13),
 (3, 14),
 (4, 15),
-(4, 16);
+(4, 16),
+(10, 1),
+(10, 2),
+(10, 3),
+(10, 4),
+(10, 5),
+(10, 6),
+(10, 7),
+(10, 8),
+(10, 9),
+(10, 11);
